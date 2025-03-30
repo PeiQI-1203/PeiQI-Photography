@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曹清华摄影 | 专业视觉叙事者</title>
+    <style>
+        /* 专业配色方案 */
+        :root {
+            --primary: #1a1a2e;       /* 深蓝黑 - 专业稳重 */
+            --secondary: #16213e;     /* 海军蓝 */
+            --accent: #e94560;       /* 暗红色 - 点睛之笔 */
+            --light: #f8f8f8;        /* 浅灰背景 */
+            --dark: #0f0f0f;         /* 深色文字 */
+            --text: #333333;         /* 正文文字 */
+            --spacing: 1.5rem;       /* 基础间距 */
+            --border-radius: 8px;    /* 圆角统一 */
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* 平滑过渡 */
+        }
+
+        /* 基础重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Noto Sans SC', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: white;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 专业字体引入 */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+        /* 导航栏 - 专业固定导航 */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 0.8rem 0;
+            background-color: rgba(26, 26, 46, 0.98);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 英雄区域 - 全屏视觉冲击 */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            background: linear-gradient(rgba(10, 10, 20, 0.7), rgba(10, 10, 20, 0.7)), url('hero-bg.jpg') center/cover no-repeat fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--light), transparent);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 var(--spacing);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        /* 作品集部分 - 专业画廊展示 */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--text);
+            max-width: 700px;
+            margin: 1rem auto 0;
+            opacity: 0.8;
+        }
+
+        .portfolio {
+            background-color: var(--light);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 4/3;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            transform: translateY(20px);
+            transition: transform 0.4s;
+        }
+
+        .overlay p {
+            transform: translateY(20px);
+            transition: transform 0.4s 0.1s;
+            opacity: 0.8;
+        }
+
+        .gallery-item:hover .overlay h3,
+        .gallery-item:hover .overlay p {
+            transform: translateY(0);
+        }
+
+        /* 关于我部分 - 专业个人介绍 */
+        .about {
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--light), transparent);
+            z-index: 1;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-img {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-img::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 3px solid var(--accent);
+            border-radius: var(--border-radius);
+            z-index: -1;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            opacity: 0.9;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-top: 2rem;
+        }
+
+        /* 服务部分 - 专业卡片展示 */
+        .services {
+            background-color: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 3rem 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-bottom-color: var(--accent);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        /* 联系部分 - 专业联系方式 */
+        .contact {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--light), transparent);
+            z-index: 1;
+        }
+
+        .contact .section-title h2 {
+            color: white;
+        }
+
+        .contact .section-title h2::after {
+            background-color: white;
+        }
+
+        .contact .section-title p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-info {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .contact-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item p, .contact-item a {
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .contact-item a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* 页脚 - 专业版权信息 */
+        footer {
+            background-color: var(--dark);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 2.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none; /* 移动端需要添加菜单按钮 */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero {
+                min-height: 700px;
+            }
+            
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+
+        /* 滚动动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+    <!-- 引入Font Awesome和Google字体 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">曹<span>清华</span>摄影</a>
+                <ul class="nav-links">
+                    <li><a href="#portfolio">作品集</a></li>
+                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#services">服务项目</a></li>
+                    <li><a href="#contact">联系我</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1>用镜头讲述<span style="color: var(--accent);">故事</span></h1>
+            <p>我是曹清华，一名专注于创造情感与美感并存的视觉叙事者。通过独特的视角和专业的技术，我致力于将每一个瞬间转化为永恒的艺术。</p>
+            <div class="btn-group">
+                <a href="#portfolio" class="btn">查看作品</a>
+                <a href="#contact" class="btn btn-outline">预约拍摄</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品集部分 -->
+    <section id="portfolio" class="section portfolio">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>精选作品</h2>
+                <p>探索我的摄影世界，每一张照片背后都有一个独特的故事</p>
+            </div>
+            <div class="gallery">
+                <!-- 作品1 -->
+                <div class="gallery-item fade-in">
+                    <img src="portrait.jpg" alt="专业人像摄影">
+                    <div class="overlay">
+                        <h3>人像系列</h3>
+                        <p>捕捉最真实的情感表达</p>
+                    </div>
+                </div>
+                
+                <!-- 作品2 -->
+                <div class="gallery-item fade-in" style="animation-delay: 0.1s;">
+                    <img src="landscape.jpg" alt="风景摄影作品">
+                    <div class="overlay">
+                        <h3>自然风光</h3>
+                        <p>展现大自然的壮丽与宁静</p>
+                    </div>
+                </div>
+                
+                <!-- 作品3 -->
+                <div class="gallery-item fade-in" style="animation-delay: 0.2s;">
+                    <img src="street.jpg" alt="街头摄影作品">
+                    <div class="overlay">
+                        <h3>街头纪实</h3>
+                        <p>城市生活的真实切片</p>
+                    </div>
+                </div>
+                
+                <!-- 作品4 -->
+                <div class="gallery-item fade-in" style="animation-delay: 0.3s;">
+                    <img src="commercial.jpg" alt="商业摄影作品">
+                    <div class="overlay">
+                        <h3>商业摄影</h3>
+                        <p>专业的产品与品牌呈现</p>
+                    </div>
+                </div>
+                
+                <!-- 作品5 -->
+                <div class="gallery-item fade-in" style="animation-delay: 0.4s;">
+                    <img src="event.jpg" alt="活动摄影作品">
+                    <div class="overlay">
+                        <h3>活动记录</h3>
+                        <p>重要时刻的专业捕捉</p>
+                    </div>
+                </div>
+                
+                <!-- 作品6 -->
+                <div class="gallery-item fade-in" style="animation-delay: 0.5s;">
+                    <img src="creative.jpg" alt="创意摄影作品">
+                    <div class="overlay">
+                        <h3>创意视觉</h3>
+                        <p>艺术与想象的碰撞</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我部分 -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>关于摄影师</h2>
+                <p>了解我的创作理念和专业背景</p>
+            </div>
+            <div class="about-content">
+                <div class="about-img fade-in">
+                    <img src="photographer.jpg" alt="摄影师曹清华">
+                </div>
+                <div class="about-text">
+                    <h2 class="fade-in">曹清华</h2>
+                    <p class="fade-in">作为一名数据科学专业的学生，我发现了摄影与数据分析之间惊人的相似之处——两者都是关于观察、分析和呈现世界的不同方式。这种跨学科的视角赋予了我独特的创作优势。</p>
+                    <p class="fade-in">我的摄影风格融合了精确的技术控制与深刻的情感表达。我相信，一张优秀的照片不仅需要完美的构图和光线，更需要能够触动观者内心的情感共鸣。</p>
+                    <p class="fade-in">在重庆城市科技大学学习期间，我通过自学掌握了专业的摄影技术和后期处理技能，并逐渐形成了自己独特的视觉语言。</p>
+                    <div class="signature fade-in">曹清华</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务部分 -->
+    <section id="services" class="section services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>专业服务</h2>
+                <p>为您提供全方位的摄影解决方案</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-portrait"></i>
+                    </div>
+                    <h3>专业人像摄影</h3>
+                    <p>个人写真、职业形象照、艺术肖像等，在专业影棚或外景地点拍摄，展现您最完美的一面。</p>
+                </div>
+                
+                <div class="service-card fade-in" style="animation-delay: 0.1s;">
+                    <div class="service-icon">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3>婚礼与活动摄影</h3>
+                    <p>用镜头记录您人生中的重要时刻，从前期策划到后期制作，提供完整的影像服务。</p>
+                </div>
+                
+                <div class="service-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="service-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>商业产品摄影</h3>
+                    <p>为电商、广告和宣传材料提供专业级产品摄影服务，突出产品特点和品牌形象。</p>
+                </div>
+                
+                <div class="service-card fade-in" style="animation-delay: 0.3s;">
+                    <div class="service-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3>建筑与空间摄影</h3>
+                    <p>专业展现建筑美学和空间设计，适用于房地产、建筑事务所和室内设计公司。</p>
+                </div>
+                
+                <div class="service-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="service-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>自然风光摄影</h3>
+                    <p>定制化的风景摄影服务，创作可用于装饰、出版和商业用途的高质量自然影像。</p>
+                </div>
+                
+                <div class="service-card fade-in" style="animation-delay: 0.5s;">
+                    <div class="service-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>专业后期处理</h3>
+                    <p>RAW文件处理、色彩校正、高级修饰和创意合成，为您的照片提供专业级后期支持。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系部分 -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>联系我</h2>
+                <p>期待与您合作，共同创造视觉艺术</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-details">
+                    <div class="contact-item fade-in">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>电话</h3>
+                        <p><a href="tel:+8617782210378">+86 177 8221 0378</a></p>
+                    </div>
+                    
+                    <div class="contact-item fade-in" style="animation-delay: 0.1s;">
+                        <i class="fas fa-envelope"></i>
+                        <h3>邮箱</h3>
+                        <p><a href="mailto:caoqinghua@example.com">caoqinghua@example.com</a></p>
+                    </div>
+                    
+                    <div class="contact-item fade-in" style="animation-delay: 0.2s;">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>工作室地址</h3>
+                        <p>重庆市大学城西路xx号创意园区A栋503</p>
+                    </div>
+                </div>
+                
+                <div class="social-links fade-in" style="animation-delay: 0.3s;">
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-500px"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> 曹清华摄影工作室. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- 简单的JavaScript增强 -->
+    <script>
+        // 更新版权年份
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(el => {
+            el.style.opacity = 0;
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
